@@ -31,12 +31,16 @@ app.get('/insertBunchData',function(req,res){
 app.get('/getData',function(req,res){
 	MongoClient.connect(url, function(err, db) {
 	  assert.equal(null, err);
-	  var cursor = db.collection('testTable').find();
-	  var data = []
-	  cursor.each(function(err, doc,cb) {
-	  		assert.equal(err, null);
-	  		console.log(doc)
-		})
+	   db.collection('testTable').find({name:"mohan9944"}).toArray(function(err,objs){
+	  	res.send(JSON.stringify(objs))
+	  });
+	 //  var data = []
+	 //  console.log(cursor)
+
+	 //  cursor.each(function(err, doc,cb) {
+	 //  		assert.equal(err, null);
+	 //  		console.log(cursor)
+		// })
 	});
 
 })
