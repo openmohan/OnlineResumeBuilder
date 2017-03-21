@@ -2,6 +2,7 @@ var express = require('express')
   , app = express()
   , bodyParser = require('body-parser')
   , port = process.env.PORT || 3000
+  , db = require('./helpers/mongoDBConnector')
 
 // app.set('views', __dirname + '/views')
 // app.engine('jade', require('jade').__express)
@@ -12,10 +13,15 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(require('./controllers'))
 
-app.listen(port, function() {
-  console.log('Listening on port ' + port)
+db.connect(function(err){
+  if(err){
+    console.log("cant connec to DB")
+  }else{
+    app.listen(port, function() {
+      console.log('Listening on port ' + port)
+    })
+  }
 })
-
 
 
 //Source - https://www.terlici.com/2014/09/29/express-router.html
