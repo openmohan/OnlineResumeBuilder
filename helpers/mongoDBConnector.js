@@ -8,6 +8,7 @@ var state = {
   db : null
 }
 
+//function to connect with DB
 exports.connect = function(done){
   if(state.db){
     return done()
@@ -16,6 +17,21 @@ exports.connect = function(done){
       assert.equal(null,err);
       state.db = db;
       done();
+    })
+  }
+}
+
+//function to get the DB
+exports.get = function(){
+  return state.db
+}
+
+//function to close the DB connection
+exports.close = function(done){
+  if(state.db){
+    state.db.close(function(err,result){
+      state.db = null;
+      done(err)
     })
   }
 }
