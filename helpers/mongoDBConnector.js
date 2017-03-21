@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
-var dbConfigs = require('../configs/configs/DataBaseConfigs')
+var dbConfigs = require('../configs/DataBaseConfigs')
 var url = dbConfigs.DBURL;
 var userTable = dbConfigs.userTable;
 
