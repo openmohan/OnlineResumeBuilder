@@ -3,7 +3,7 @@ var assert = require('assert');
 var url = 'mongodb://localhost:27017/testDB';
 var userTable = "testTable" ;
 
-
+//function to get Specific User data
 exports.getUserData = function(id,callback){
 	MongoClient.connect(url, function(err, db) {
 	  assert.equal(null, err);
@@ -14,6 +14,7 @@ exports.getUserData = function(id,callback){
 	})
 }
 
+//function to get all user data
 exports.getAllUserData = function(callback){
 	MongoClient.connect(url, function(err, db) {
 	  assert.equal(null, err);
