@@ -15,5 +15,8 @@ router.get('/user/all',function(req,res){
 	userData.getAllUserData(function(err,userData){res.send(userData)})
 })
 
+router.post('/user/put',function(req,res){
+  userData.putUserData(req.body,function(err,result){res.send(result)})
+})
 
 module.exports = router

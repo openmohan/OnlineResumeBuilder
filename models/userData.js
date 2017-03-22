@@ -19,3 +19,12 @@ exports.getAllUserData = function(callback){
 	  	callback(null,JSON.stringify(objs))
 	  });
 }
+
+//function to push one member data
+exports.putUserData = function(object,callback){
+	db.get().collection("testTable").insert(object,function(err,result){
+		assert.equal(null,err);
+		var result = {status:"success",data:object}
+		callback(null,result)
+	})
+}
