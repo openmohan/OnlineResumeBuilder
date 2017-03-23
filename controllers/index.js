@@ -4,6 +4,8 @@ var express = require('express')
 router.use('/comments', require('./comments'))
 router.use('/users', require('./users'))
 router.use('/user',require('./basicOperations'))
+
+//Will not work
 router.use('/mail',require('./mailOperations'))
 
 router.get('/', function(req, res) {
