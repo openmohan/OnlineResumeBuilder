@@ -1,2 +1,2 @@
-exports.DBURL = "mongodb://localhost:27017/testDB";
+exports.DBURL = "mongodb://0.0.0.0:27017/testDB";
 exports.userTable = "testTable"
