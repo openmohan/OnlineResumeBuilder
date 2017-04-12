@@ -19,8 +19,10 @@ router.post('/user/put',function(req,res){
   userData.putUserData(req.body,function(err,result){res.send(result)})
 })
 
-router.post('/checkUser/:user',function(req,res){
-  userData.checkUser(req.params.user,function(err,result){res.send(result)})
+router.get('/checkUser/:user',function(req,res){
+  userData.checkUser(req.params.user,function(err,result){
+    res.setHeader('Content-Type', 'application/json');
+    res.send(result)})
 })
 
 module.exports = router

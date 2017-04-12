@@ -22,6 +22,7 @@ exports.getAllUserData = function(callback){
 
 //function to push one member data
 exports.putUserData = function(object,callback){
+	console.log(object);
 	db.get().collection(userTable).insert(object,function(err,result){
 		assert.equal(null,err);
 		var result = {status:"success",data:object}
