@@ -6,9 +6,17 @@ var db = require('../helpers/mongoDBConnector')
 
 //function to get Specific User data
 exports.getUserData = function(id,callback){
-	   db.get().collection(userTable).find({name:id}).toArray(function(err,objs){
+	   db.get().collection(userTable).find({resumeid:id}).toArray(function(err,objs){
 	   	console.log(objs)
 	  	callback(null,JSON.stringify(objs))
+	  });
+}
+
+//function to get Specific User data by ID
+exports.getUserDataById = function(id,callback){
+	   db.get().collection(userTable).find({id:id}).toArray(function(err,objs){
+	  	callback(null,(objs))
+			console.log(objs)
 	  });
 }
 
@@ -23,7 +31,7 @@ exports.getAllUserData = function(callback){
 //function to push one member data
 exports.putUserData = function(object,callback){
 	console.log(object);
-	db.get().collection(userTable).insert(object,function(err,result){
+	db.get().collection(userTable).update({"_id":object._id},object,{upsert:true},function(err,result){
 		assert.equal(null,err);
 		var result = {status:"success",data:object}
 		callback(null,result)
@@ -31,7 +39,7 @@ exports.putUserData = function(object,callback){
 }
 
 exports.checkUser = function(id,callback){
-	db.get().collection(userTable).find({name:id}).toArray(function(err,objs){
+	db.get().collection(userTable).find({resumeid:id}).toArray(function(err,objs){
 	 console.log(objs)
 	 if(objs.length > 0 )
 	 callback(null,JSON.stringify({"exists":true}))

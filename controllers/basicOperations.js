@@ -25,4 +25,8 @@ router.get('/checkUser/:user',function(req,res){
     res.send(result)})
 })
 
+router.get('/id/:id',function(req,res){
+	userData.getUserDataById(req.params.id,function(err,userData){res.send(userData)})
+})
+
 module.exports = router
