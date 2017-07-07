@@ -43,8 +43,8 @@ exports.checkUser = function(id,callback){
 	db.get().collection(userTable).find({resumeid:id}).toArray(function(err,objs){
 	 console.log(objs)
 	 if(objs.length > 0 )
-	 callback(null,JSON.stringify({"exists":true}))
+	 callback(null,JSON.stringify({"exists":true,"id":objs[0].id}))
 	 else
-	 callback(null,JSON.stringify({"exists":false}))
+	 callback(null,JSON.stringify({"exists":false,"id":"empty"}))
  });
 }
