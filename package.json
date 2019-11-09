@@ -23,7 +23,7 @@
     "mongodb": "^2.2.24",
     "querystring": "^0.2.0",
     "sendmail": "^1.1.1",
-    "superagent": "^3.5.2"
+    "superagent": "^5.0.2"
   },
   "devDependencies": {
     "mocha": "^2.2.4",
